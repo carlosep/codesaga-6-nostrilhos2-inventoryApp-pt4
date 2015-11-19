@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117201029) do
+ActiveRecord::Schema.define(version: 20151119182432) do
+
+  create_table "item_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -20,6 +26,9 @@ ActiveRecord::Schema.define(version: 20151117201029) do
     t.string   "asset_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "item_category_id"
   end
+
+  add_index "items", ["item_category_id"], name: "index_items_on_item_category_id"
 
 end
