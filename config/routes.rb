@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :item_categories
+
   root 'home#index'
   resources :items, only: [:new, :create, :show]
   # The priority is based upon order of creation: first created -> highest priority.
